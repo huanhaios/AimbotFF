@@ -974,3 +974,107 @@ border: 2px solid #ff;
   }
 }
  
+
+/* Hest🇻🇳🇻🇳🇻🇳🇻🇳🇻🇳*/
+    /* Style cho overlay của modal */
+  
+
+/* Style cho modal overlay */
+    .modal.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Nội dung modal */
+    .modal-content {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      width: 350px;
+      position: relative;
+      animation: slideDown 0.5s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    /* Nút đóng modal */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.3s;
+    }
+    .close:hover {
+      color: #333;
+    }
+    /* Tiêu đề modal */
+    .modal-content h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    /* Style cho input */
+    .modal-content input[type="email"],
+    .modal-content input[type="password"],
+    .modal-content input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+    .modal-content input:focus {
+      border-color: #007BFF;
+    }
+    /* Icon trong input */
+    .input-icon {
+      position: relative;
+    }
+    .input-icon i {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+    .input-icon input {
+      padding-left: 35px;
+    }
+    /* Nút submit */
+    .modal-content button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #007BFF, #00C6FF);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .modal-content button:hover {
+      background: linear-gradient(45deg, #0056b3, #0090cc);
+    }
+    /* Liên kết chuyển đổi giữa modal */
+    .toggle-modal {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .toggle-modal a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .toggle-modal a:hover {
+      text-decoration: underline;
+    }
+   
