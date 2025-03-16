@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TRUMAIMBOT.XYZ</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/OutXhHO.jpeg">
+
+<!-- Cấu hình hiển thị cho Windows -->
+<meta name="msapplication-TileColor" content="#000">
+<meta name="theme-color" content="#000">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Firebase JS (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+  <!-- Firebase Config -->
+  <script src="firebase-config.js"></script>
+  <!-- Main Script -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER (giống index.html) -->
+  <header class="header">
+    <div class="hamburger" id="hamburgerBtn">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="logo">
+      <img src="https://i.imgur.com/9ZPofGn.jpeg" alt="DVG Logo" />
+      <span class="site-title"></span>
+    </div>
+    <div class="user-menu">
+      <button id="btnShowLogin" class="btn-auth">Đăng Nhập</button>
+      <button id="btnShowRegister" class="btn-auth">Đăng Ký</button>
+      <div id="loggedInMenu" class="logged-in-menu hidden">
+<i class="fa fa-user"></i>
+        <span id="displayName">Username</span>
+        <span class="balance-label">Số Dư: <strong id="userBalance">0</strong>đ</span>
+        <img id="arrowIcon" src="https://cdn-icons-png.flaticon.com/512/892/892498.png" alt="Arrow" class="arrow-icon"/>
+        <div id="dropdownMenu" class="dropdown-menu hidden">
+          <a href="info.html">Thông Tin Tài Khoản</a>
+          <hr/>
+          <a href="#" id="btnLogout">Đăng Xuất</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR (Menu 3 gạch) -->
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-header">
+    <button id="btnCloseSidebar" class="btn-close-sidebar">&times;</button>
+  </div>
+  <ul>
+    <li><button id="btnNapBank" class="sidebar-btn">Nạp Bank</button></li>
+    <li><button id="btnNapTheCao" class="sidebar-btn">Nạp Thẻ Cào</button></li>
+    <li><button id="btnOrderHistory" class="sidebar-btn">Lịch sử mua hàng</button></li>
+  </ul>
+</div>
+
+  <!-- Sản Phẩm Thêm -->
+  <section class="category-section">
+    <h2>IPA AIMBOT ANTIBAND</h2>
+<div class="separator-yellow"></div>
+    <div class="category-content">
+
+  <div class="banner-item">
+  <!-- Ảnh sản phẩm -->
+<!-- Khu vực logo nhỏ gọn -->
+  <div class="helo-container">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTYyebYEGSXXFk6qeLCIl7qTFcqYQKZSRg7w&s" 
+      alt="Logo"
+      class="helo-img"
+    />
+  </div>
+
+  <!-- Tiêu đề hoặc mô tả chính có icon check phía sau -->
+  <p class="desc-with-check">
+    IPA ANTIBAND 100% 
+  </p>
+
+  <!-- Danh sách bullet có icon check xanh -->
+  <ul class="feature-list">
+    <li>Hỗ trợ tất cả phiên bản iOS</li>
+    <li>Ghim Đầu</li>
+    <li>Antiband Safe</li>
+    <li>No VPn</li>
+    <li>Định vị</li>
+  </ul>
+
+  <!-- Giá, giảm giá, v.v. (tuỳ ý) -->
+  <div class="price-box">
+    <span class="old-price">250.000đ</span>
+    <span class="new-price">160.000đ</span>
+  </div>
+
+  <!-- Select box -->
+  <div class="select-box">
+    <select id="packageSelect">
+      <option value="">Chọn Gói</option>
+      <option value="200k/1ob">160/1ob</option>
+    </select>
+  </div>
+
+  <!-- Nút Mua Ngay -->
+  <button
+    class="buy-now-btn"
+    onclick="handleBuyNowWrapper(event)"
+    data-price="160000"
+    data-product=" AIMBOT IPA ĐỊNH VỊ"
+    data-download="https://fnote.net/notes/kWJ74f"
+  >
+    <i class="fa-solid fa-cart-shopping"></i>
+    Mua Ngay
+  </button>
+</div>
+
+</div>
+   
+  </section>
+
+  <!-- Các modal (Đăng nhập, Đăng ký, Nạp Bank, Nạp Thẻ, Lịch Sử) giống index.html -->
+  <!-- Modal Đăng Nhập -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="closeLoginModal">&times;</span>
+      <h2>Đăng Nhập</h2>
+      <input type="email" id="loginEmail" placeholder="Địa chỉ email" />
+      <input type="password" id="loginPassword" placeholder="Mật khẩu" />
+      <button id="btnLoginSubmit">Đăng Nhập</button>
+      <p class="toggle-modal">Chưa có tài khoản? <a href="#" id="toRegisterModal">Đăng Ký</a></p>
+      <div id="loginError" class="error-message"></div>
+    </div>
+  </div>
+  <!-- Modal Đăng Ký -->
+  <div id="registerModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="closeRegisterModal">&times;</span>
+      <h2>Đăng Ký</h2>
+      <input type="email" id="registerEmail" placeholder="Địa chỉ email" />
+      <input type="text" id="registerUsername" placeholder="Tên hiển thị" />
+      <input type="password" id="registerPassword" placeholder="Mật khẩu" />
+      <button id="btnRegisterSubmit">Tạo Tài Khoản</button>
+      <p class="toggle-modal">Đã có tài khoản? <a href="#" id="toLoginModal">Đăng Nhập</a></p>
+      <div id="registerError" class="error-message"></div>
+    </div>
+  </div>
+  <!-- Modal Nạp Bank -->
+<div id="napBankModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close" id="closeNapBankModal">&times;</span>
+    <div class="modal-header">
+      <!-- Logo ngân hàng, thay đổi src theo logo của bạn -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Logo_MB_new.png/1200px-Logo_MB_new.png" alt="MBBank Logo" class="bank-logo">
+     
+    </div>
+    <div class="bank-info">
+      <div class="info-item">
+        <label>Ngân hàng:</label>
+        <span class="readonly-text">MBBank</span>
+      </div>
+      <div class="info-item">
+        <label>Số tài khoản:</label>
+        <span class="readonly-text">0325575642</span>
+      </div>
+      <div class="info-item">
+        <label>Chủ TK:</label>
+        <span class="readonly-text">HA VAN HUAN</span>
+      </div>
+    </div>
+    <hr>
+    <div class="input-group">
+      <input type="number" id="bankAmount" placeholder="VD: 100,000 VNĐ">
+    </div>
+    <div class="transfer-note">
+      <p>Nội dung chuyển khoản: <span id="bankNote"></span></p>
+    </div>
+    <button id="btnSubmitBank" class="submit-btn">Xác Nhận Đã Chuyển</button>
+    <p class="info-note">(Sau khi Admin kiểm tra giao dịch, số dư sẽ được cộng)</p>
+  </div>
+</div>
+
+<!-- Modal Nạp Thẻ Cào -->
+<div id="napTheModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close" id="closeNapTheModal">&times;</span>
+    <div class="modal-header">
+      <!-- Icon từ Font Awesome -->
+      <i class="fas fa-credit-card modal-icon"></i>
+    </div>
+    <div class="card-info">
+      <div class="input-group">
+        <input type="number" id="cardAmount" placeholder="Số tiền muốn nạp (VNĐ)">
+      </div>
+      <div class="input-group">
+        <input type="text" id="cardType" placeholder="Loại thẻ (Viettel, Vina...)">
+      </div>
+      <div class="input-group">
+        <input type="text" id="cardSerial" placeholder="Mã seri">
+      </div>
+      <div class="input-group">
+        <input type="text" id="cardCode" placeholder="Mã thẻ">
+      </div>
+    </div>
+    <button id="btnSubmitCard" class="submit-btn">Xác Nhận</button>
+    <p class="info-note">(Sau khi Admin duyệt, số dư sẽ được cộng)</p>
+  </div>
+</div>
+
+ <!-- Modal Lịch sử mua hàng -->
+<div id="orderHistoryModal" class="modal hidden">
+  <div class="modal-content order-modal-content">
+    <span class="close" id="closeOrderHistoryModal">&times;</span>
+    <div class="order-modal-header">
+      <div class="animated-icon">
+        <i class="fas fa-exclamation"></i>
+      </div>
+      <h2><i class="fas fa-history"></i> Lịch sử mua hàng</h2>
+    </div>
+    <!-- Container chứa danh sách đơn hàng -->
+    <div id="orderHistoryContainer" class="order-history-container">
+      <div id="orderHistoryContent" class="order-history-content">
+        <!-- Mẫu một đơn hàng -->
+        <div class="order-item">
+          <div class="order-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="order-details">
+            <p class="order-date">12/03/2025</p>
+            <p class="order-info">Đơn hàng #12345 - Thành công</p>
+          </div>
+        </div>
+        <!-- Bạn có thể thêm nhiều đơn hàng khác -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Phần kết trang -->
+  <section class="footer-iguidecheat">
+    <!-- Tiêu đề giới thiệu -->
+    <h2 class="footer-title">GIỚI THIỆU TRUMAIMBOT</h2>
+    <p class="footer-desc">
+      Trumaimbot.online là nền tảng hàng đầu cung cấp các công cụ và mod trò chơi,
+      giúp bạn trải nghiệm những game một cách dễ dàng và an toàn. Chúng tôi
+      hiểu rằng mỗi người có một cách chơi khác nhau, vì vậy chúng tôi luôn
+      tập trung vào việc đem lại sự hỗ trợ tốt nhất. Hãy truy cập thường xuyên
+      để cập nhật những bản hack và mod an toàn, giúp bạn tối ưu trải nghiệm
+      với mức độ an toàn cao nhất.
+    </p>
+    
+    <!-- Kết nối với chúng tôi -->
+    <h3 class="footer-subtitle">KẾT NỐI VỚI CHÚNG TÔI</h3>
+    <div class="footer-buttons">
+      <!-- Nút channel telegram -->
+      <a href="https://t.me/suporthuanhavn" class="btn-telegram-blue">
+        <i class="fa-brands fa-telegram"></i>
+        Channel Telegram
+      </a>
+      <!-- Nút group chat telegram -->
+      <a href="https://t.me/huanhasuport" class="btn-telegram-green">
+        <i class="fa-brands fa-telegram"></i>
+        Group Chat Telegram
+      </a>
+    </div>
+    
+    <!-- Điều khoản -->
+    <h3 class="footer-subtitle">ĐIỀU KHOẢN</h3>
+    <p class="footer-terms">Điều khoản sử dụng</p>
+$ Vui Lòng Chấp Hành Các Quy Định Của Website Của Chúng Tôi
+  </section>
+
+
+  <!-- Toast Notification -->
+  <div id="notification" class="notification hidden"></div>
+<script>
+// Ví dụ mở sidebar khi nhấn nút hamburger (nếu có):
+document.getElementById('hamburgerBtn').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.add('active');
+});
+</script>
+</body>
+</html>
