@@ -14,7 +14,7 @@
 body {
   background: linear-gradient(135deg, #fff, #fff);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #FFFF00;
+  color: lime;
   line-height: 1.6;
 }
 .buy-now-btn {
@@ -73,8 +73,8 @@ body {
   align-items: center;
 }
 .btn-auth {
-  background: #ff9800;
-  border: none;
+  background: transparent;
+  border-top: 1px solid ré;
   padding: 8px 14px;
   margin-left: 10px;
   cursor: pointer;
@@ -216,7 +216,7 @@ body {
 .sidebar-btn {
   width: 100%;
   padding: 10px;
-  background: #ecf0f1;
+  background: transparent;
   border: 2px solid #bdc3c7;
   border-radius: 5px;
   color: #2c3e50;
@@ -229,11 +229,28 @@ body {
   color: #fff;
   border-color: #95a5a6;
 }
+.sidebet-btn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 2px solid #bdc3c7;
+  border-radius: 5px;
+  color: yelow;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sidebar-btn:hover {
+  background: #bdc3c7;
+  color: #fff;
+  border-color: #95a5a6;
+}
+  
 
 /* BANNER */
 .welcome-banner {
   /* Sử dụng hình ảnh nền, thay URL bằng đường dẫn hình ảnh bạn muốn */
-  background: url('https://i.pinimg.com/originals/0f/05/bf/0f05bf7fdd0dd9083b77aa2ffb6666d2.gif') no-repeat center center/cover;
+  background: url('https://cdn6.aptoide.com/imgs/7/8/1/781fe2601d6b6f4d385a3d44f4a4fdf3_icon.png') no-repeat center center/cover;
   padding: 150px 35px;
   text-align: center;
   border-radius: 0px;
@@ -275,266 +292,247 @@ body {
   justify-content: center;
   gap: 20px;
 }
-/* Vùng chứa tổng thể sản phẩm */
-.banner-item {
-  background-color: #f2f2f2;  /* màu xám nhạt */
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  font-family: Arial, sans-serif;
-  position: relative;
-}
-
-/* Ảnh sản phẩm */
-.product-image {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 15px;
-}
-
-/* Tiêu đề/ mô tả chính có icon check ở cuối text */
-.desc-with-check {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  position: relative;
-  padding-right: 30px; /* chừa khoảng trống để icon nằm cuối */
-  margin-bottom: 15px;
-}
-
-/* Icon check xanh nằm bên phải */
-.check-icon {
-  color: #4caf50; /* màu xanh lá */
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 20px;
-  transform: translateY(2px); /* tinh chỉnh icon */
-}
-
-/* Danh sách tính năng (các bullet với icon check xanh) */
-.feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 15px 0;
-}
-
-.feature-list li {
-  position: relative;
-  padding-left: 30px; /* để icon ở bên trái */
-  margin-bottom: 8px;
-  color: #555;
-}
-
-/* Icon check xanh cho mỗi bullet */
-.feature-list li::before {
-  content: "\f00c"; /* mã unicode cho icon check trong Font Awesome */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900; /* cần để hiển thị solid icon */
-  color: #4caf50;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.buy-now-btn i {
-  margin-right: 6px;
-}
-
-/* Hiệu ứng hover nút */
-.buy-now-btn:hover {
-  background-color: #4caf50;
-  color: #fff;
-}
-
-/* Giá cũ - mới */
-.price-box {
-  margin-bottom: 15px;
-}
-
-.old-price {
-  text-decoration: line-through;
-  color: #999;
-  margin-right: 8px;
-  font-size: 14px;
-}
-
-.new-price {
-  color: #e53935;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* Select box */
-.select-box {
-  margin-bottom: 15px;
-}
-
-.select-box select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font: inherit;
-  cursor: pointer;
-}
-
-
-
-/* Icon giỏ hàng cách chữ một chút */
-.green-buy {
-  background: #4caf50;
-}
-.green-buy:hover {
-  background: #43a047;
-}
-
-/* XEM THÊM */
-.view-more-container {
-  text-align: center;
-  margin: 20px 0;
-}
-.view-more-btn {
-  background: #2196f3;
-  color: #fff;
-  padding: 10px 25px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-.view-more-btn:hover {
-  background: #1976d2;
-}
-
-/* MODAL */
-/* --------------------- Common Modal Styles --------------------- */
-.modal {
-  display: flex;
-  position: fixed;
-  z-index: 1100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-  align-items: center;
-  justify-content: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.modal.hidden {
-  display: none;
-}
-.modal-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px 30px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  position: relative;
-}
-
-/* Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #999;
-}
-.close:hover {
-  color: #666;
-}
-
-/* --------------------- Modal Header --------------------- */
-.modal-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.bank-logo {
-  width: 80px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
-.modal-icon {
-  font-size: 60px;
-  color: #3498db;
-  margin-bottom: 10px;
-}
-
-/* --------------------- Bank Info & Card Info --------------------- */
-.bank-info, .card-info {
-  margin-bottom: 20px;
-}
-.info-item {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-.info-item label {
-  font-weight: bold;
-  font-size: 16px;
-  color: #333;
-  margin-right: 10px;
-  min-width: 120px;
-}
-.readonly-text {
-  background: #f4f4f4;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #555;
-}
-
-/* --------------------- Input Groups --------------------- */
-.input-group {
-  margin-bottom: 15px;
-}
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Transfer Note Styling */
-.transfer-note p {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-/* --------------------- Submit Button --------------------- */
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  background: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s ease;
-}
-.submit-btn:hover {
-  background: #2980b9;
-}
-
-/* --------------------- Info Note --------------------- */
-.info-note {
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-  margin-top: 15px;
-}
+    /* Container bao ngoài (nền tổng thể) */
+      /* Mỗi container sản phẩm */
+  /* Container chứa các banner (để sắp xếp thành lưới nếu cần) */
+      /* Container bao ngoài (nền tổng thể) */
+    .banner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    /* Khung sản phẩm (card) */
+    .banner-item {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      transition: box-shadow 0.3s ease-in-out;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    .banner-item:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px rgba(255, 87, 51, 0.5);
+      }
+      to {
+        box-shadow: 0 0 20px rgba(255, 87, 51, 1);
+      }
+    }
+    /* Ảnh sản phẩm */
+    .banner-img {
+      width: 100%;
+      display: block;
+    }
+    /* Nội dung bên trong khung */
+    .banner-content {
+      padding: 15px;
+    }
+    /* Tiêu đề chính với icon check */
+    .banner-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    .banner-title i {
+      margin-right: 10px;
+      color: #28a745;
+      font-size: 28px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Thanh ngăn cách mờ */
+    .divider {
+      border: 0;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+    }
+    /* Danh sách các tính năng */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .feature-list li {
+      font-size: 16px;
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      color: #555;
+    }
+    .feature-list li i {
+      margin-right: 10px;
+      color: #28a745;
+    }
+    /* Nút Xem thêm */
+    .view-more-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .view-more-btn {
+      text-decoration: none;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #FF5733, #FFC300);
+      color: #fff;
+      border-radius: 25px;
+      transition: background 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .view-more-btn i {
+      margin-right: 8px;
+    }
+    .view-more-btn:hover {
+      background: linear-gradient(45deg, #FFC300, #FF5733);
+    }
+ 
+  
+  
+  
+  
+    /* ===== Modal Base ===== */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .hidden {
+      display: none;
+    }
+    .modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+    }
+    /* ===== Modal Header ===== */
+    .modal-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .modal-header img.bank-logo {
+      width: 60px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+    /* ===== Bank Info ===== */
+    .bank-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .bank-info .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bank-info label {
+      font-weight: bold;
+      color: #555;
+      min-width: 120px;
+    }
+    .readonly-text {
+      color: #333;
+    }
+    /* ===== Input Section ===== */
+    .input-section {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .input-group label {
+      font-weight: bold;
+      color: #555;
+      flex: 0 0 120px;
+    }
+    .input-group input {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .transfer-note {
+      background: #f9f9f9;
+      border: 1px dashed #ccc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .transfer-note p {
+      margin: 0;
+      color: #555;
+    }
+    .note-box {
+      font-style: italic;
+      color: #888;
+    }
+    /* ===== Submit Button & Info Note ===== */
+    .submit-btn {
+      width: 100%;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #218838;
+    }
+    .info-note {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 10px;
+    }
+  
 
 /* LỊCH SỬ MUA HÀNG */
 .order-item {
@@ -977,104 +975,526 @@ border: 2px solid #ff;
 
 /* Hest🇻🇳🇻🇳🇻🇳🇻🇳🇻🇳*/
     /* Style cho overlay của modal */
-  
+  /* Modal Overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-/* Style cho modal overlay */
-    .modal.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .modal.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    /* Nội dung modal */
-    .modal-content {
-      background: #fff;
-      border-radius: 10px;
-      padding: 30px;
-      width: 350px;
-      position: relative;
-      animation: slideDown 0.5s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    /* Nút đóng modal */
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
+/* Ẩn modal khi có class .hidden */
+.modal.hidden {
+  display: none;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+  position: relative;
+}
+
+/* Hiệu ứng Fade In */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nút đóng modal */
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Tiêu đề modal */
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Input group dùng cho ô nhập liệu với icon */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.input-group-text {
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  outline: none;
+}
+
+/* Nút bấm modal */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-success {
+  background: #28a745;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Văn bản chuyển modal */
+.toggle-modal {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Các thông báo lỗi */
+.error-message {
+  font-size: 14px;
+  color: #d93025;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive cho thiết bị nhỏ */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    padding: 15px 20px;
+  }
+  .modal-content h2 {
+    font-size: 20px;
+  }
+}
+
+
+
+/* --- CSS cho Modal Lịch sử mua hàng: nền đen và các chức năng màu xanh lục --- */
+
+/* Overlap background cho modal fade */
+#orderHistoryModal.modal.fade {
+  background: rgba(0, 0, 0, 0.85);
+  transition: background 0.3s ease-in-out;
+}
+
+/* Căn chỉnh modal dialog */
+#orderHistoryModal .modal-dialog {
+  max-width: 800px;
+  margin: 1.75rem auto;
+}
+
+/* Modal Content: nền đen, văn bản và biểu tượng chính màu xanh lục */
+#orderHistoryModal .modal-content {
+  background-color: #000;
+  color: #00d68f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+  animation: modalPop 0.3s forwards;
+}
+
+/* Hiệu ứng pop cho modal */
+@keyframes modalPop {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Modal Header */
+#orderHistoryModal .modal-header {
+  background-color: #000;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+#orderHistoryModal .modal-header .modal-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #00d68f;
+}
+  
+/* Nút đóng modal: sử dụng btn-close của Bootstrap, thay đổi màu bằng cách override pseudo-element nếu cần */
+#orderHistoryModal .btn-close {
+  filter: invert(1);
+}
+
+/* Modal Body */
+#orderHistoryModal .modal-body {
+  background-color: #000;
+  padding: 1.5rem;
+}
+
+/* Danh sách đơn hàng (list-group) */
+#orderHistoryModal .list-group {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Mỗi item đơn hàng */
+#orderHistoryModal .list-group-item {
+  background-color: #000;
+  border: none;
+  border-bottom: 1px solid #00d68f;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#orderHistoryModal .list-group-item:hover {
+  background-color: #111;
+}
+
+/* Icon giỏ hàng trong đơn hàng */
+#orderHistoryModal .list-group-item i.fa-shopping-cart {
+  font-size: 2rem;
+  color: #00d68f;
+}
+
+/* Văn bản và link trong đơn hàng */
+#orderHistoryModal .list-group-item p,
+#orderHistoryModal .list-group-item small,
+#orderHistoryModal .list-group-item a {
+  margin: 0;
+  color: #00d68f;
+}
+
+/* Modal Footer */
+#orderHistoryModal .modal-footer {
+  background-color: #000;
+  border-top: 1px solid #00d68f;
+  padding: 1rem 1.5rem;
+  justify-content: flex-end;
+}
+input[type="text"],
+input[type="number"],
+textarea {
+  font-size: 16px;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  font-size: 16px;
+}
+
+
+.blue-box {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    border-radius: 0px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    height: 50px;
+}
+
+.marquee {
+    white-space: nowrap;
+    position: absolute;
+    animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+    /* Style cho từng icon tuyết */
+    .snowflake {
+      position: fixed;
+      top: -10%;
+      color: #fff;
       font-size: 24px;
-      cursor: pointer;
-      color: #888;
-      transition: color 0.3s;
+      opacity: 0.8;
+      animation: fall linear infinite;
     }
-    .close:hover {
-      color: #333;
+    /* Keyframes cho hiệu ứng rơi */
+    @keyframes fall {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(100px) translateY(110vh);
+        opacity: 0;
+      }
     }
-    /* Tiêu đề modal */
-    .modal-content h2 {
+    /* Tùy chỉnh vị trí, thời gian và độ trễ của mỗi icon */
+    .snowflake:nth-child(1) {
+      left: 10%;
+      animation-duration: 10s;
+      animation-delay: 0s;
+    }
+    .snowflake:nth-child(2) {
+      left: 20%;
+      animation-duration: 12s;
+      animation-delay: 2s;
+    }
+    .snowflake:nth-child(3) {
+      left: 30%;
+      animation-duration: 8s;
+      animation-delay: 4s;
+    }
+    .snowflake:nth-child(4) {
+      left: 40%;
+      animation-duration: 11s;
+      animation-delay: 1s;
+    }
+    .snowflake:nth-child(5) {
+      left: 50%;
+      animation-duration: 9s;
+      animation-delay: 3s;
+    }
+    .snowflake:nth-child(6) {
+      left: 60%;
+      animation-duration: 10s;
+      animation-delay: 0s;
+    }
+    .snowflake:nth-child(7) {
+      left: 70%;
+      animation-duration: 13s;
+      animation-delay: 2s;
+    }
+    .snowflake:nth-child(8) {
+      left: 80%;
+      animation-duration: 7s;
+      animation-delay: 4s;
+    }
+    .snowflake:nth-child(9) {
+      left: 90%;
+      animation-duration: 12s;
+      animation-delay: 1s;
+    }
+    .snowflake:nth-child(10) {
+      left: 5%;
+      animation-duration: 10s;
+      animation-delay: 2s;
+    }
+
+
+    .khung {
+      border: 3px solid #fff;   /* border trắng */
+      background: transparent;  /* không có nền */
+      padding: 20px 30px;
+      border-radius: 10px;      /* bo tròn góc (có thể bỏ nếu không cần) */
+    }
+    .khung h1 {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;  /* font chữ đẹp */
+      font-size: 48px;
+      color: #ff4081;         /* màu sắc nổi bật */
       text-align: center;
-      color: #333;
-      margin-bottom: 20px;
     }
-    /* Style cho input */
-    .modal-content input[type="email"],
-    .modal-content input[type="password"],
-    .modal-content input[type="text"] {
+         h2 {
+      display: flex;
+      align-items: center;
+      font-size: 48px;
+      color: #FF5733;
+      margin: 0;
+    }
+    /* Thanh ngăn dọc sát icon và chữ */
+    .vertical-separator {
+      width: 5px;
+      height: 48px;
+      background-color: #FF5733;
+      margin: 0; /* không có khoảng cách giữa icon và chữ */
+    }
+    /* Thanh separator vàng bên dưới */
+    .separator-yellow {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      transition: border-color 0.3s;
+      height: 3px;
+      background-color: yellow;
+      margin-top: 10px;
     }
-    .modal-content input:focus {
-      border-color: #007BFF;
-    }
-    /* Icon trong input */
-    .input-icon {
+/* Khung sản phẩm với hiệu ứng phát sáng */
+  /* Phần CSS từ bạn (giữ nguyên) */
+    .banner-product {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 380px;
+      margin: 20px auto;
       position: relative;
+      animation: glowEffect 2s ease-in-out infinite alternate;
     }
-    .input-icon i {
-      position: absolute;
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
-      color: #aaa;
+    @keyframes glowEffect {
+      from {
+        box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+      }
+      to {
+        box-shadow: 0 0 20px rgba(255, 123, 0, 1);
+      }
     }
-    .input-icon input {
-      padding-left: 35px;
+    /* Khu vực logo */
+    .logo-area {
+      padding: 10px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.03);
     }
-    /* Nút submit */
-    .modal-content button {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(45deg, #007BFF, #00C6FF);
-      border: none;
+    .logo-area img {
+      max-width: 80px;
+      border-radius: 50%;
+      border: 2px solid #FF5733;
+    }
+    /* Nội dung sản phẩm */
+    .product-content {
+      padding: 15px;
+    }
+    /* Tiêu đề sản phẩm với icon */
+    .product-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .product-title i {
+      margin-right: 8px;
+      color: #28a745;
+      font-size: 22px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Thanh ngăn cách mờ */
+    .product-divider {
+      border: 0;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 10px 0;
+    }
+    /* Danh sách tính năng với icon */
+    .product-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .product-features li {
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      color: #555;
+    }
+    .product-features li i {
+      margin-right: 8px;
+      color: #28a745;
+    }
+    /* Hiển thị giá */
+    .price-box {
+      margin: 10px 0;
+      text-align: center;
+    }
+    .price-box .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-right: 10px;
+    }
+    .price-box .new-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #e53935;
+    }
+    /* Select box */
+    .select-box {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .select-box select {
+      padding: 5px 10px;
       border-radius: 5px;
+      border: 1px solid #ccc;
+      background: #fff;
+      font-size: 14px;
+    }
+    /* Nút Mua Ngay */
+    .btn-buy-now {
+      display: block;
+      width: calc(100% - 40px);
+      margin: 15px auto;
+      padding: 10px;
+      background: linear-gradient(45deg, #FF5733, #FFC300);
+      border: none;
+      border-radius: 25px;
       color: #fff;
       font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s;
-    }
-    .modal-content button:hover {
-      background: linear-gradient(45deg, #0056b3, #0090cc);
-    }
-    /* Liên kết chuyển đổi giữa modal */
-    .toggle-modal {
+      transition: background 0.3s ease;
       text-align: center;
-      margin-top: 15px;
     }
-    .toggle-modal a {
-      color: #007BFF;
-      text-decoration: none;
-      font-weight: bold;
+    .btn-buy-now i {
+      margin-right: 8px;
     }
-    .toggle-modal a:hover {
-      text-decoration: underline;
+    .btn-buy-now:hover {
+      background: linear-gradient(45deg, #FFC300, #FF5733);
     }
-   
+    
+    /* Phần HTML mới bổ sung sử dụng các lớp khác tên để đảm bảo không trùng với CSS cũ */
+    /* Sử dụng lớp .banner-item, .helo-container, .desc-with-check, .feature-list, .price-box, .select-box, .buy-now-btn */
+    /* Các banner được đặt trong container chung căn giữa màn hình */
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+    /* Nếu bạn muốn các banner dùng hiệu ứng .banner-product, bạn có thể thay đổi lớp .banner-item thành .banner-product ở đây */
+ 

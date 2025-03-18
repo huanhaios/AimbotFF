@@ -39,7 +39,7 @@
 body {
   background: linear-gradient(135deg, #fff, #fff);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #FFFF00;
+  color: lime;
   line-height: 1.6;
 }
 .buy-now-btn {
@@ -98,8 +98,8 @@ body {
   align-items: center;
 }
 .btn-auth {
-  background: #ff9800;
-  border: none;
+  background: transparent;
+  border-top: 1px solid ré;
   padding: 8px 14px;
   margin-left: 10px;
   cursor: pointer;
@@ -241,7 +241,7 @@ body {
 .sidebar-btn {
   width: 100%;
   padding: 10px;
-  background: #ecf0f1;
+  background: transparent;
   border: 2px solid #bdc3c7;
   border-radius: 5px;
   color: #2c3e50;
@@ -254,10 +254,50 @@ body {
   color: #fff;
   border-color: #95a5a6;
 }
+.sidebet-btn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 2px solid #bdc3c7;
+  border-radius: 5px;
+  color: yelow;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sidebar-btn:hover {
+  background: #bdc3c7;
+  color: #fff;
+  border-color: #95a5a6;
+}
+  
 
+/* BANNER */
+.welcome-banner {
+  /* Sử dụng hình ảnh nền, thay URL bằng đường dẫn hình ảnh bạn muốn */
+  background: url('https://cdn6.aptoide.com/imgs/7/8/1/781fe2601d6b6f4d385a3d44f4a4fdf3_icon.png') no-repeat center center/cover;
+  padding: 150px 35px;
+  text-align: center;
+  border-radius: 0px;
+  margin: 0px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
 
+.welcome-banner h2 {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
 
+.welcome-banner p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
 
+.welcome-banner a {
+  color: #ff9800;
+  text-decoration: underline;
+  font-weight: 600;
+}
 
 /* DANH MỤC SẢN PHẨM */
 .category-section {
@@ -409,134 +449,136 @@ body {
 .view-more-btn:hover {
   background: #1976d2;
 }
-
-/* MODAL */
-/* --------------------- Common Modal Styles --------------------- */
-.modal {
-  display: flex;
-  position: fixed;
-  z-index: 1100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-  align-items: center;
-  justify-content: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.modal.hidden {
-  display: none;
-}
-.modal-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px 30px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  position: relative;
-}
-
-/* Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #999;
-}
-.close:hover {
-  color: #666;
-}
-
-/* --------------------- Modal Header --------------------- */
-.modal-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.bank-logo {
-  width: 80px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
-.modal-icon {
-  font-size: 60px;
-  color: #3498db;
-  margin-bottom: 10px;
-}
-
-/* --------------------- Bank Info & Card Info --------------------- */
-.bank-info, .card-info {
-  margin-bottom: 20px;
-}
-.info-item {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-.info-item label {
-  font-weight: bold;
-  font-size: 16px;
-  color: #333;
-  margin-right: 10px;
-  min-width: 120px;
-}
-.readonly-text {
-  background: #f4f4f4;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #555;
-}
-
-/* --------------------- Input Groups --------------------- */
-.input-group {
-  margin-bottom: 15px;
-}
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Transfer Note Styling */
-.transfer-note p {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-/* --------------------- Submit Button --------------------- */
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  background: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s ease;
-}
-.submit-btn:hover {
-  background: #2980b9;
-}
-
-/* --------------------- Info Note --------------------- */
-.info-note {
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-  margin-top: 15px;
-}
+  
+    /* ===== Modal Base ===== */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .hidden {
+      display: none;
+    }
+    .modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+    }
+    /* ===== Modal Header ===== */
+    .modal-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .modal-header img.bank-logo {
+      width: 60px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+    /* ===== Bank Info ===== */
+    .bank-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .bank-info .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bank-info label {
+      font-weight: bold;
+      color: #555;
+      min-width: 120px;
+    }
+    .readonly-text {
+      color: #333;
+    }
+    /* ===== Input Section ===== */
+    .input-section {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .input-group label {
+      font-weight: bold;
+      color: #555;
+      flex: 0 0 120px;
+    }
+    .input-group input {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .transfer-note {
+      background: #f9f9f9;
+      border: 1px dashed #ccc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .transfer-note p {
+      margin: 0;
+      color: #555;
+    }
+    .note-box {
+      font-style: italic;
+      color: #888;
+    }
+    /* ===== Submit Button & Info Note ===== */
+    .submit-btn {
+      width: 100%;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #218838;
+    }
+    .info-note {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 10px;
+    }
+  
 
 /* LỊCH SỬ MUA HÀNG */
 .order-item {
@@ -976,94 +1018,365 @@ border: 2px solid #ff;
   }
 }
  
- .profile-card {
-      background-color: none;
-      color: #000;
-      padding: 20px 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      width: 350px;
-      transform: translateY(20px);
-      opacity: 0;
-      animation: slideUp 0.6s forwards ease 0.2s;
-    }
-    @keyframes slideUp {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
 
-    .profile-card h2 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 5px;
-      color: #bbb;
-    }
-    .profile-card input {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      font-size: 0.95rem;
-      color: #333;
-    }
-    .profile-card input:focus {
-      box-shadow: 0 0 5px #5563DE;
-    }
-    .btn-submit {
-      background: #5563DE;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      width: 100%;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-top: 5px;
-    }
-    .btn-submit:hover {
-      background: #3c4aa5;
-    }
-    .note {
-      font-size: 0.85rem;
-      color: #ccc;
-      margin-top: 5px;
-    }
+/* Hest🇻🇳🇻🇳🇻🇳🇻🇳🇻🇳*/
+    /* Style cho overlay của modal */
+  /* Modal Overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-    /* Thông báo nổi (toast) */
-    #notification {
-      position: fixed;
-      top: 10px; right: 10px;
-      background: #4caf50;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 5px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-20px);
-      transition: opacity 0.5s, transform 0.5s;
-    }
-    #notification.error {
-      background: #f44336;
-    }
-    #notification.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
+/* Ẩn modal khi có class .hidden */
+.modal.hidden {
+  display: none;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+  position: relative;
+}
+
+/* Hiệu ứng Fade In */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nút đóng modal */
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Tiêu đề modal */
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Input group dùng cho ô nhập liệu với icon */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.input-group-text {
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  outline: none;
+}
+
+/* Nút bấm modal */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-success {
+  background: #28a745;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Văn bản chuyển modal */
+.toggle-modal {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Các thông báo lỗi */
+.error-message {
+  font-size: 14px;
+  color: #d93025;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive cho thiết bị nhỏ */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    padding: 15px 20px;
+  }
+  .modal-content h2 {
+    font-size: 20px;
+  }
+}
+
+
+
+/* --- CSS cho Modal Lịch sử mua hàng: nền đen và các chức năng màu xanh lục --- */
+
+/* Overlap background cho modal fade */
+#orderHistoryModal.modal.fade {
+  background: rgba(0, 0, 0, 0.85);
+  transition: background 0.3s ease-in-out;
+}
+
+/* Căn chỉnh modal dialog */
+#orderHistoryModal .modal-dialog {
+  max-width: 800px;
+  margin: 1.75rem auto;
+}
+
+/* Modal Content: nền đen, văn bản và biểu tượng chính màu xanh lục */
+#orderHistoryModal .modal-content {
+  background-color: #000;
+  color: #00d68f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+  animation: modalPop 0.3s forwards;
+}
+
+/* Hiệu ứng pop cho modal */
+@keyframes modalPop {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Modal Header */
+#orderHistoryModal .modal-header {
+  background-color: #000;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+#orderHistoryModal .modal-header .modal-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #00d68f;
+}
   
+/* Nút đóng modal: sử dụng btn-close của Bootstrap, thay đổi màu bằng cách override pseudo-element nếu cần */
+#orderHistoryModal .btn-close {
+  filter: invert(1);
+}
+
+/* Modal Body */
+#orderHistoryModal .modal-body {
+  background-color: #000;
+  padding: 1.5rem;
+}
+
+/* Danh sách đơn hàng (list-group) */
+#orderHistoryModal .list-group {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Mỗi item đơn hàng */
+#orderHistoryModal .list-group-item {
+  background-color: #000;
+  border: none;
+  border-bottom: 1px solid #00d68f;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#orderHistoryModal .list-group-item:hover {
+  background-color: #111;
+}
+
+/* Icon giỏ hàng trong đơn hàng */
+#orderHistoryModal .list-group-item i.fa-shopping-cart {
+  font-size: 2rem;
+  color: #00d68f;
+}
+
+/* Văn bản và link trong đơn hàng */
+#orderHistoryModal .list-group-item p,
+#orderHistoryModal .list-group-item small,
+#orderHistoryModal .list-group-item a {
+  margin: 0;
+  color: #00d68f;
+}
+
+/* Modal Footer */
+#orderHistoryModal .modal-footer {
+  background-color: #000;
+  border-top: 1px solid #00d68f;
+  padding: 1rem 1.5rem;
+  justify-content: flex-end;
+}
+input[type="text"],
+input[type="number"],
+textarea {
+  font-size: 16px;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  font-size: 16px;
+}
+
+
+
+/* Container chính */
+.profile-card {
+    max-width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: auto;
+    text-align: left;
+    position: relative;
+}
+
+/* Tiêu đề */
+.profile-card h2 {
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Nhóm nhập liệu */
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Nhãn */
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Input box */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 35px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.2);
+    background: #fff;
+}
+
+/* Icon trong ô nhập */
+.form-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 14px;
+}
+
+/* Ghi chú */
+.note {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Nút Lưu */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #0056b3;
+}
+    .khung {
+      border: 3px solid #fff;   /* border trắng */
+      background: transparent;  /* không có nền */
+      padding: 20px 30px;
+      border-radius: 10px;      /* bo tròn góc (có thể bỏ nếu không cần) */
+    }
+    .khung h1 {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;  /* font chữ đẹp */
+      font-size: 48px;
+      color: #ff4081;         /* màu sắc nổi bật */
+      text-align: center;
+    }
+ 
+
 </style>
 </head>
 <body>
@@ -1077,8 +1390,7 @@ border: 2px solid #ff;
       <div class="bar"></div>
       <div class="bar"></div>
     </div>
-    <div class="logo">
-      <img src="https://i.imgur.com/9ZPofGn.jpeg" alt="DVG Logo" />
+   
       <span class="site-title"></span>
     </div>
     <!-- User Menu -->
@@ -1171,78 +1483,105 @@ border: 2px solid #ff;
  
 
   <!-- Modal Đăng Nhập -->
-  <div id="loginModal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close" id="closeLoginModal">&times;</span>
-      <h2>Đăng Nhập</h2>
-      <input type="email" id="loginEmail" placeholder="Địa chỉ email" />
-      <input type="password" id="loginPassword" placeholder="Mật khẩu" />
-      <button id="btnLoginSubmit">Đăng Nhập</button>
-      <p class="toggle-modal">Chưa có tài khoản? <a href="#" id="toRegisterModal">Đăng Ký</a></p>
-      <div id="loginError" class="error-message"></div>
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content p-4 rounded shadow">
+    <span class="close" id="closeLoginModal" style="cursor: pointer; font-size: 24px;">&times;</span>
+    <h2 class="mb-4"><i class="fas fa-sign-in-alt me-2"></i>Đăng Nhập</h2>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+      <input type="email" id="loginEmail" class="form-control" placeholder="Địa chỉ email">
     </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+      <input type="password" id="loginPassword" class="form-control" placeholder="Mật khẩu">
+    </div>
+    <button id="btnLoginSubmit" class="btn btn-primary w-100 mb-3">Đăng Nhập</button>
+    <p class="toggle-modal text-center">Chưa có tài khoản? <a href="#" id="toRegisterModal">Đăng Ký</a></p>
+    <div id="loginError" class="error-message text-danger mt-2"></div>
   </div>
+</div>
 
-  <!-- Modal Đăng Ký -->
-  <div id="registerModal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close" id="closeRegisterModal">&times;</span>
-      <h2>Đăng Ký</h2>
-      <input type="email" id="registerEmail" placeholder="Địa chỉ email" />
-      <input type="text" id="registerUsername" placeholder="Tên hiển thị" />
-      <input type="password" id="registerPassword" placeholder="Mật khẩu" />
-      <button id="btnRegisterSubmit">Tạo Tài Khoản</button>
-      <p class="toggle-modal">Đã có tài khoản? <a href="#" id="toLoginModal">Đăng Nhập</a></p>
-      <div id="registerError" class="error-message"></div>
+<!-- Modal Đăng Ký -->
+<div id="registerModal" class="modal hidden">
+  <div class="modal-content p-4 rounded shadow">
+    <span class="close" id="closeRegisterModal" style="cursor: pointer; font-size: 24px;">&times;</span>
+    <h2 class="mb-4"><i class="fas fa-user-plus me-2"></i>Đăng Ký</h2>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+      <input type="email" id="registerEmail" class="form-control" placeholder="Địa chỉ email">
     </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-user"></i></span>
+      <input type="text" id="registerUsername" class="form-control" placeholder="Tên hiển thị">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+      <input type="password" id="registerPassword" class="form-control" placeholder="Mật khẩu">
+    </div>
+    <button id="btnRegisterSubmit" class="btn btn-success w-100 mb-3">Tạo Tài Khoản</button>
+    <p class="toggle-modal text-center">Đã có tài khoản? <a href="#" id="toLoginModal">Đăng Nhập</a></p>
+    <div id="registerError" class="error-message text-danger mt-2"></div>
   </div>
+</div>
+
+  
+
+
+
+
+
 
   <!-- Modal Nạp Bank -->
 <div id="napBankModal" class="modal hidden">
   <div class="modal-content">
     <span class="close" id="closeNapBankModal">&times;</span>
     <div class="modal-header">
-      <!-- Logo ngân hàng, thay đổi src theo logo của bạn -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Logo_MB_new.png/1200px-Logo_MB_new.png" alt="MBBank Logo" class="bank-logo">
-     
+      <h2><i class="fa fa-university"></i> Nạp Bank</h2>
     </div>
     <div class="bank-info">
       <div class="info-item">
-        <label>Ngân hàng:</label>
+        <label><i class="fa fa-bank"></i> Ngân hàng:</label>
         <span class="readonly-text">MBBank</span>
       </div>
       <div class="info-item">
-        <label>Số tài khoản:</label>
+        <label><i class="fa fa-credit-card"></i> Số tài khoản:</label>
         <span class="readonly-text">0325575642</span>
       </div>
       <div class="info-item">
-        <label>Chủ TK:</label>
+        <label><i class="fa fa-user"></i> Chủ TK:</label>
         <span class="readonly-text">HA VAN HUAN</span>
       </div>
     </div>
     <hr>
-    <div class="input-group">
-      <input type="number" id="bankAmount" placeholder="VD: 100,000 VNĐ">
+    <div class="input-section">
+      <div class="input-group">
+        <label for="bankAmount"><i class="fa fa-money"></i> Số tiền:</label>
+        <!-- Đổi type từ number sang text -->
+        <input type="text" id="bankAmount" placeholder="VD: 100000">
+      </div>
+      <div class="transfer-note">
+        <p><i class="fa fa-pencil"></i> Nội dung chuyển khoản:</p>
+        <p id="bankNote" class="note-box">[Tự động tạo mã giao dịch]</p>
+      </div>
     </div>
-    <div class="transfer-note">
-      <p>Nội dung chuyển khoản: <span id="bankNote"></span></p>
-    </div>
-    <button id="btnSubmitBank" class="submit-btn">Xác Nhận Đã Chuyển</button>
+    <button id="btnSubmitBank" class="submit-btn">
+      <i class="fa fa-check"></i> Xác Nhận Đã Chuyển
+    </button>
     <p class="info-note">(Sau khi Admin kiểm tra giao dịch, số dư sẽ được cộng)</p>
   </div>
 </div>
-
 <!-- Modal Nạp Thẻ Cào -->
 <div id="napTheModal" class="modal hidden">
   <div class="modal-content">
     <span class="close" id="closeNapTheModal">&times;</span>
     <div class="modal-header">
-      <!-- Icon từ Font Awesome -->
       <i class="fas fa-credit-card modal-icon"></i>
     </div>
     <div class="card-info">
       <div class="input-group">
-        <input type="number" id="cardAmount" placeholder="Số tiền muốn nạp (VNĐ)">
+        <!-- Đổi type từ number sang text -->
+        <input type="text" id="cardAmount" placeholder="VD : 50000">
       </div>
       <div class="input-group">
         <input type="text" id="cardType" placeholder="Loại thẻ (Viettel, Vina...)">
@@ -1258,7 +1597,6 @@ border: 2px solid #ff;
     <p class="info-note">(Sau khi Admin duyệt, số dư sẽ được cộng)</p>
   </div>
 </div>
-
  <!-- Modal Lịch sử mua hàng -->
 <div id="orderHistoryModal" class="modal hidden">
   <div class="modal-content order-modal-content">
@@ -1290,11 +1628,14 @@ border: 2px solid #ff;
 <!-- Footer liên hệ -->
 <!-- Phần kết trang -->
 <!-- Phần kết trang -->
+ <!-- Phần kết trang -->
   <section class="footer-iguidecheat">
-    <!-- Tiêu đề giới thiệu -->
-    <h2 class="footer-title">GIỚI THIỆU TRUMAIMBOT</h2>
+  <div class="khung">
+    <h1>Hà Văn Huấn</h1>
+  </div>
+    
     <p class="footer-desc">
-      Trumaimbot.online là nền tảng hàng đầu cung cấp các công cụ và mod trò chơi,
+      huanhaios.shop là nền tảng hàng đầu cung cấp các công cụ và mod trò chơi,
       giúp bạn trải nghiệm những game một cách dễ dàng và an toàn. Chúng tôi
       hiểu rằng mỗi người có một cách chơi khác nhau, vì vậy chúng tôi luôn
       tập trung vào việc đem lại sự hỗ trợ tốt nhất. Hãy truy cập thường xuyên
@@ -1445,6 +1786,134 @@ $ Vui Lòng Chấp Hành Các Quy Định Của Website Của Chúng Tôi
 // Ví dụ mở sidebar khi nhấn nút hamburger (nếu có):
 document.getElementById('hamburgerBtn').addEventListener('click', function() {
   document.getElementById('sidebar').classList.add('active');
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+// Khi trang được tải, hiển thị thông báo chào mừng bằng SweetAlert2
+document.addEventListener("DOMContentLoaded", function() {
+  Swal.fire({
+    title: 'Chào mừng!',
+    text: 'Chào mừng đến với Trang Thông Tin Của Chính Mình - Hãy tận hưởng trải nghiệm tuyệt vời!',
+    icon: 'success',
+    timer: 3000,
+    showConfirmButton: false
+  });
+});
+
+// Khi nhấn nút Nạp Bank, hiển thị thông báo và sau đó mở modal nạp bank
+document.getElementById('btnNapBank').addEventListener('click', function() {
+  Swal.fire({
+    title: 'Nạp Bank',
+    text: 'Bạn đã chọn Nạp Bank!',
+    icon: 'info',
+    confirmButtonText: 'Tiếp tục'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Giữ chức năng mở modal nạp bank ban đầu
+      document.getElementById('napBankModal').classList.remove('hidden');
+    }
+  });
+});
+
+// Khi nhấn nút Nạp Thẻ Cào, hiển thị thông báo và sau đó mở modal nạp thẻ
+document.getElementById('btnNapTheCao').addEventListener('click', function() {
+  Swal.fire({
+    title: 'Nạp Thẻ Cào',
+    text: 'Bạn đã chọn Nạp Thẻ Cào!',
+    icon: 'info',
+    confirmButtonText: 'Tiếp tục'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById('napTheModal').classList.remove('hidden');
+    }
+  });
+});
+
+// Khi nhấn nút Đăng Nhập, hiển thị thông báo rồi mở modal đăng nhập
+document.getElementById('btnShowLogin').addEventListener('click', function() {
+  Swal.fire({
+    title: 'Đăng Nhập',
+    text: 'Vui lòng nhập thông tin đăng nhập của bạn.',
+    icon: 'info',
+    confirmButtonText: 'Tiếp tục'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById('loginModal').classList.remove('hidden');
+    }
+  });
+});
+
+// Khi nhấn nút Đăng Ký, hiển thị thông báo rồi mở modal đăng ký
+document.getElementById('btnShowRegister').addEventListener('click', function() {
+  Swal.fire({
+    title: 'Đăng Ký',
+    text: 'Vui lòng nhập thông tin đăng ký của bạn.',
+    icon: 'info',
+    confirmButtonText: 'Tiếp tục'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById('registerModal').classList.remove('hidden');
+    }
+  });
+});
+
+// Ví dụ: Khi người dùng xác nhận đã chuyển tiền trong modal Nạp Bank
+document.getElementById('btnSubmitBank').addEventListener('click', function() {
+  Swal.fire({
+    title: 'Xác Nhận Giao Dịch',
+    text: 'Bạn đã xác nhận chuyển tiền?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Đã chuyển',
+    cancelButtonText: 'Hủy'
+  }).then((result) => {
+    if(result.isConfirmed) {
+      // Ở đây bạn có thể gọi API hoặc thực hiện các thao tác cần thiết
+      Swal.fire({
+        title: 'Thành công',
+        text: 'Giao dịch đã được ghi nhận!',
+        icon: 'success'
+      });
+      // Sau đó ẩn modal nạp bank nếu cần
+      document.getElementById('napBankModal').classList.add('hidden');
+    }
+  });
+});
+
+// Tương tự, bạn có thể thêm SweetAlert2 cho các nút khác (như đăng nhập, đăng ký, nạp thẻ)
+// Ví dụ: Xử lý nút Đăng Nhập bên trong modal đăng nhập
+document.getElementById('btnLoginSubmit').addEventListener('click', function() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  
+  if(email === "" || password === ""){
+    Swal.fire({
+      title: 'Lỗi',
+      text: 'Vui lòng nhập đầy đủ thông tin!',
+      icon: 'error'
+    });
+    return;
+  }
+  
+  // Giả sử bạn có hàm xử lý đăng nhập (loginFunction)
+  // loginFunction(email, password)
+  //   .then(() => {
+  //     Swal.fire({
+  //       title: 'Thành công',
+  //       text: 'Đăng nhập thành công!',
+  //       icon: 'success'
+  //     });
+  //     // Ẩn modal đăng nhập
+  //     document.getElementById('loginModal').classList.add('hidden');
+  //   })
+  //   .catch((error) => {
+  //     Swal.fire({
+  //       title: 'Lỗi',
+  //       text: 'Đăng nhập thất bại: ' + error.message,
+  //       icon: 'error'
+  //     });
+  //   });
 });
 </script>
 </body>

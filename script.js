@@ -35,8 +35,8 @@ const toLoginModal = document.getElementById("toLoginModal");
 const btnLogout = document.getElementById("btnLogout");
 const btnLogoutDirect = document.getElementById("btnLogoutDirect");
 
-// Thông báo (toast)
-const notification = document.getElementById("notification");
+// (Không cần dùng toast notification DOM khi tích hợp SweetAlert2)
+// const notification = document.getElementById("notification");
 
 // Balance hiển thị
 const userBalanceSpan = document.getElementById("userBalance");
@@ -75,48 +75,16 @@ const closeOrderHistoryModal = document.getElementById("closeOrderHistoryModal")
 const orderHistoryContent = document.getElementById("orderHistoryContent");
 
 /********************************
- * Hàm hiển thị thông báo (toast)
- * type: "success" (mặc định) hay "error"
+ * Hàm hiển thị thông báo (SweetAlert2)
+ * type: "success" (mặc định) hoặc "error"
  ********************************/
-// Giả sử notification là phần tử thông báo
-
 function showNotification(message, type = "success") {
-  if (!notification) return;
-  
-  // Tùy chỉnh icon và màu sắc dựa trên loại thông báo
-  let iconHTML = "";
-  if (type === "error") {
-    iconHTML = '<i class="fa fa-times-circle" aria-hidden="true"></i>';
-    // Màu nền nhạt và chữ cho cảnh báo
-    notification.style.backgroundColor = "#fdecea"; // nền đỏ nhạt
-    notification.style.color = "#d93025"; // chữ đỏ
-  } else {
-    iconHTML = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
-    // Màu nền nhạt và chữ cho thành công
-    notification.style.backgroundColor = "#e6f4ea"; // nền xanh nhạt
-    notification.style.color = "#34a853"; // chữ xanh lá
-  }
-  
-  // Ghép icon và nội dung thông báo
-  notification.innerHTML = `<span class="icon">${iconHTML}</span><span class="message">${message}</span>`;
-  
-  // Loại bỏ các lớp ẩn và fade-out, thêm hiệu ứng fade-in
-  notification.classList.remove("hidden", "fade-out");
-  // Khởi tạo lại hiệu ứng (nếu cần)
-  void notification.offsetWidth;
-  notification.classList.add("fade-in");
-  
-  // Sau 2 giây, chuyển sang fade-out
-  setTimeout(() => {
-    notification.classList.remove("fade-in");
-    notification.classList.add("fade-out");
-  }, 4000);
-  
-  // Sau 3 giây, ẩn thông báo và xóa các lớp hiệu ứng
-  setTimeout(() => {
-    notification.classList.add("hidden");
-    notification.classList.remove("fade-out");
-  }, 6000);
+  Swal.fire({
+    title: type === "error" ? "Lỗi" : "Thông báo",
+    text: message,
+    icon: type === "error" ? "error" : "success",
+    confirmButtonText: "OK"
+  });
 }
 
 /********************************
@@ -289,7 +257,7 @@ if (btnSubmitBank) {
       userId: user.uid,
       type: "bank",
       amount: amount,
-      status: false,    // false: chưa duyệt
+      status: false,    // chưa duyệt
       processed: false, // chưa cộng tiền
       createdAt: Date.now()
     })
@@ -403,7 +371,10 @@ function handleBuyNow(btn) {
       };
       orderRef.set(orderData)
         .then(() => {
-          showNotification("Mua thành công! <a href='" + downloadLink + "' target='_blank'>Tải ngay</a>");
+          showNotification("Mua thành công! Nhấn OK để tải sản phẩm.")
+            .then(() => {
+              window.open(downloadLink, "_blank");
+            });
         })
         .catch(err => {
           console.error(err);
@@ -415,7 +386,7 @@ function handleBuyNow(btn) {
     showNotification("Lỗi khi mua hàng!", "error");
   });
 }
-
+ 
 /********************************
  * Xử lý nút Mua Ngay (Wrapper)
  ********************************/
@@ -511,12 +482,10 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-// thông tin tài khoản của người dùng
-    // Lấy phần tử select và span hiển thị
+// Thông tin tài khoản của người dùng
 const packageSelect = document.getElementById("packageSelect");
 const chosenText = document.getElementById("chosenText");
 
-// Lắng nghe sự kiện change khi người dùng chọn option
 packageSelect.addEventListener("change", () => {
   const value = packageSelect.value;
   if (value) {
@@ -526,16 +495,76 @@ packageSelect.addEventListener("change", () => {
   }
 });
 
-
-    window.addEventListener('load', function() {
-      var audio = document.getElementById('audioPlayer');
-      
-      audio.play().catch(function(error) {
-        console.log("Không thể tự động phát nhạc: ", error);
-      });
-    });
+window.addEventListener('load', function() {
+  var audio = document.getElementById('audioPlayer');
+  audio.play().catch(function(error) {
+    console.log("Không thể tự động phát nhạc: ", error);
+  });
+});
 
 
 
 
-// Cảnh Báo 
+function handleBuyNow(btn) {
+  const currentUser = firebase.auth().currentUser;
+  if (!currentUser) {
+    showNotification("Bạn phải đăng nhập trước khi mua!", "error");
+    loginModal.classList.remove("hidden");
+    return;
+  }
+  const price = parseInt(btn.getAttribute("data-price"), 10);
+  const productName = btn.getAttribute("data-product");
+  const downloadLink = btn.getAttribute("data-download");
+  let currentBalance = parseInt(userBalanceSpan.textContent, 10) || 0;
+  if (currentBalance < price) {
+    showNotification("Số dư không đủ để mua sản phẩm!", "error");
+    return;
+  }
+  const userBalanceRef = firebase.database().ref("users/" + currentUser.uid + "/balance");
+  userBalanceRef.transaction((currentVal) => {
+    currentVal = currentVal || 0;
+    if (currentVal >= price) {
+      return currentVal - price;
+    } else {
+      return; // abort transaction
+    }
+  }).then(result => {
+    if (!result.committed) {
+      showNotification("Số dư không đủ!", "error");
+    } else {
+      // Ghi đơn hàng vào orders/{user.uid}
+      const orderRef = firebase.database().ref("orders/" + currentUser.uid).push();
+      const orderData = {
+        productName: productName,
+        price: price,
+        downloadLink: downloadLink,
+        timestamp: Date.now()
+      };
+      orderRef.set(orderData)
+        .then(() => {
+          // Hiển thị thông báo mua thành công với chi tiết sản phẩm và số tiền
+          Swal.fire({
+            title: "Mua thành công",
+            html: "Bạn đã mua <strong>" + productName + "</strong> với số tiền <strong>" + price.toLocaleString() + "đ</strong>.<br>Nhấn OK để tải sản phẩm.",
+            icon: "success",
+            confirmButtonText: "OK"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.open(downloadLink, "_blank");
+            }
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          showNotification("Lỗi khi lưu đơn hàng!", "error");
+        });
+    }
+  }).catch(error => {
+    console.error("Transaction error: ", error);
+    showNotification("Lỗi khi mua hàng!", "error");
+  });
+}
+
+
+
+

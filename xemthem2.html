@@ -7,6 +7,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/OutXhHO.jpeg">
 
 <!-- Cấu hình hiển thị cho Windows -->
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta name="msapplication-TileColor" content="#000">
 <meta name="theme-color" content="#000">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -28,8 +30,7 @@
       <div class="bar"></div>
       <div class="bar"></div>
     </div>
-    <div class="logo">
-      <img src="https://i.imgur.com/9ZPofGn.jpeg" alt="DVG Logo" />
+    
       <span class="site-title"></span>
     </div>
     <div class="user-menu">
@@ -67,134 +68,155 @@
 <div class="separator-yellow"></div>
     <div class="category-content">
 
-  <div class="banner-item">
-  <!-- Ảnh sản phẩm -->
-<!-- Khu vực logo nhỏ gọn -->
-  <div class="helo-container">
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTYyebYEGSXXFk6qeLCIl7qTFcqYQKZSRg7w&s" 
-      alt="Logo"
-      class="helo-img"
-    />
+   <div class="banner-product">
+    <!-- Khu vực logo nhỏ gọn -->
+    <div class="logo-area">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTYyebYEGSXXFk6qeLCIl7qTFcqYQKZSRg7w&s" 
+           alt="Logo" class="helo-img">
+    </div>
+    <!-- Nội dung sản phẩm -->
+    <div class="product-content">
+      <!-- Tiêu đề sản phẩm có icon check -->
+      <p class="product-title">
+        <i class="fa fa-check-circle"></i> IPA ANTIBAND 100%
+      </p>
+      <!-- Thanh ngăn cách -->
+      <hr class="product-divider">
+      <!-- Danh sách bullet tính năng -->
+      <ul class="product-features">
+        <li><i class="fa fa-check"></i> Hỗ trợ tất cả phiên bản iOS</li>
+        <li><i class="fa fa-check"></i> Ghim Đầu</li>
+        <li><i class="fa fa-check"></i> Antiband Safe</li>
+        <li><i class="fa fa-check"></i> No VPN</li>
+        <li><i class="fa fa-check"></i> Định vị</li>
+      </ul>
+      <!-- Giá, giảm giá -->
+      <div class="price-box">
+        <span class="old-price">250.000đ</span>
+        <span class="new-price">160.000đ</span>
+      </div>
+      <!-- Select box -->
+      <div class="select-box">
+        <select id="packageSelect">
+          <option value="">Chọn Gói</option>
+          <option value="200k/1ob">160/1ob</option>
+        </select>
+      </div>
+      <!-- Nút Mua Ngay -->
+      <button
+        class="btn-buy-now"
+        onclick="handleBuyNowWrapper(event)"
+        data-price="160000"
+        data-product="AIMBOT IPA ĐỊNH VỊ"
+        data-download="https://fnote.net/notes/kWJ74f"
+      >
+        <i class="fa-solid fa-cart-shopping"></i> Mua Ngay
+      </button>
+    </div>
   </div>
-
-  <!-- Tiêu đề hoặc mô tả chính có icon check phía sau -->
-  <p class="desc-with-check">
-    IPA ANTIBAND 100% 
-  </p>
-
-  <!-- Danh sách bullet có icon check xanh -->
-  <ul class="feature-list">
-    <li>Hỗ trợ tất cả phiên bản iOS</li>
-    <li>Ghim Đầu</li>
-    <li>Antiband Safe</li>
-    <li>No VPn</li>
-    <li>Định vị</li>
-  </ul>
-
-  <!-- Giá, giảm giá, v.v. (tuỳ ý) -->
-  <div class="price-box">
-    <span class="old-price">250.000đ</span>
-    <span class="new-price">160.000đ</span>
-  </div>
-
-  <!-- Select box -->
-  <div class="select-box">
-    <select id="packageSelect">
-      <option value="">Chọn Gói</option>
-      <option value="200k/1ob">160/1ob</option>
-    </select>
-  </div>
-
-  <!-- Nút Mua Ngay -->
-  <button
-    class="buy-now-btn"
-    onclick="handleBuyNowWrapper(event)"
-    data-price="160000"
-    data-product=" AIMBOT IPA ĐỊNH VỊ"
-    data-download="https://fnote.net/notes/kWJ74f"
-  >
-    <i class="fa-solid fa-cart-shopping"></i>
-    Mua Ngay
-  </button>
-</div>
-
-</div>
-   
   </section>
 
   <!-- Các modal (Đăng nhập, Đăng ký, Nạp Bank, Nạp Thẻ, Lịch Sử) giống index.html -->
   <!-- Modal Đăng Nhập -->
-  <div id="loginModal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close" id="closeLoginModal">&times;</span>
-      <h2>Đăng Nhập</h2>
-      <input type="email" id="loginEmail" placeholder="Địa chỉ email" />
-      <input type="password" id="loginPassword" placeholder="Mật khẩu" />
-      <button id="btnLoginSubmit">Đăng Nhập</button>
-      <p class="toggle-modal">Chưa có tài khoản? <a href="#" id="toRegisterModal">Đăng Ký</a></p>
-      <div id="loginError" class="error-message"></div>
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content p-4 rounded shadow">
+    <span class="close" id="closeLoginModal" style="cursor: pointer; font-size: 24px;">&times;</span>
+    <h2 class="mb-4"><i class="fas fa-sign-in-alt me-2"></i>Đăng Nhập</h2>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+      <input type="email" id="loginEmail" class="form-control" placeholder="Địa chỉ email">
     </div>
-  </div>
-  <!-- Modal Đăng Ký -->
-  <div id="registerModal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close" id="closeRegisterModal">&times;</span>
-      <h2>Đăng Ký</h2>
-      <input type="email" id="registerEmail" placeholder="Địa chỉ email" />
-      <input type="text" id="registerUsername" placeholder="Tên hiển thị" />
-      <input type="password" id="registerPassword" placeholder="Mật khẩu" />
-      <button id="btnRegisterSubmit">Tạo Tài Khoản</button>
-      <p class="toggle-modal">Đã có tài khoản? <a href="#" id="toLoginModal">Đăng Nhập</a></p>
-      <div id="registerError" class="error-message"></div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+      <input type="password" id="loginPassword" class="form-control" placeholder="Mật khẩu">
     </div>
+    <button id="btnLoginSubmit" class="btn btn-primary w-100 mb-3">Đăng Nhập</button>
+    <p class="toggle-modal text-center">Chưa có tài khoản? <a href="#" id="toRegisterModal">Đăng Ký</a></p>
+    <div id="loginError" class="error-message text-danger mt-2"></div>
   </div>
+</div>
+
+<!-- Modal Đăng Ký -->
+<div id="registerModal" class="modal hidden">
+  <div class="modal-content p-4 rounded shadow">
+    <span class="close" id="closeRegisterModal" style="cursor: pointer; font-size: 24px;">&times;</span>
+    <h2 class="mb-4"><i class="fas fa-user-plus me-2"></i>Đăng Ký</h2>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+      <input type="email" id="registerEmail" class="form-control" placeholder="Địa chỉ email">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-user"></i></span>
+      <input type="text" id="registerUsername" class="form-control" placeholder="Tên hiển thị">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+      <input type="password" id="registerPassword" class="form-control" placeholder="Mật khẩu">
+    </div>
+    <button id="btnRegisterSubmit" class="btn btn-success w-100 mb-3">Tạo Tài Khoản</button>
+    <p class="toggle-modal text-center">Đã có tài khoản? <a href="#" id="toLoginModal">Đăng Nhập</a></p>
+    <div id="registerError" class="error-message text-danger mt-2"></div>
+  </div>
+</div>
+
+  
+
+
+
+
+
+
   <!-- Modal Nạp Bank -->
 <div id="napBankModal" class="modal hidden">
   <div class="modal-content">
     <span class="close" id="closeNapBankModal">&times;</span>
     <div class="modal-header">
-      <!-- Logo ngân hàng, thay đổi src theo logo của bạn -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Logo_MB_new.png/1200px-Logo_MB_new.png" alt="MBBank Logo" class="bank-logo">
-     
+      <h2><i class="fa fa-university"></i> Nạp Bank</h2>
     </div>
     <div class="bank-info">
       <div class="info-item">
-        <label>Ngân hàng:</label>
+        <label><i class="fa fa-bank"></i> Ngân hàng:</label>
         <span class="readonly-text">MBBank</span>
       </div>
       <div class="info-item">
-        <label>Số tài khoản:</label>
+        <label><i class="fa fa-credit-card"></i> Số tài khoản:</label>
         <span class="readonly-text">0325575642</span>
       </div>
       <div class="info-item">
-        <label>Chủ TK:</label>
+        <label><i class="fa fa-user"></i> Chủ TK:</label>
         <span class="readonly-text">HA VAN HUAN</span>
       </div>
     </div>
     <hr>
-    <div class="input-group">
-      <input type="number" id="bankAmount" placeholder="VD: 100,000 VNĐ">
+    <div class="input-section">
+      <div class="input-group">
+        <label for="bankAmount"><i class="fa fa-money"></i> Số tiền:</label>
+        <!-- Đổi type từ number sang text -->
+        <input type="text" id="bankAmount" placeholder="VD: 100000">
+      </div>
+      <div class="transfer-note">
+        <p><i class="fa fa-pencil"></i> Nội dung chuyển khoản:</p>
+        <p id="bankNote" class="note-box">[Tự động tạo mã giao dịch]</p>
+      </div>
     </div>
-    <div class="transfer-note">
-      <p>Nội dung chuyển khoản: <span id="bankNote"></span></p>
-    </div>
-    <button id="btnSubmitBank" class="submit-btn">Xác Nhận Đã Chuyển</button>
+    <button id="btnSubmitBank" class="submit-btn">
+      <i class="fa fa-check"></i> Xác Nhận Đã Chuyển
+    </button>
     <p class="info-note">(Sau khi Admin kiểm tra giao dịch, số dư sẽ được cộng)</p>
   </div>
 </div>
-
 <!-- Modal Nạp Thẻ Cào -->
 <div id="napTheModal" class="modal hidden">
   <div class="modal-content">
     <span class="close" id="closeNapTheModal">&times;</span>
     <div class="modal-header">
-      <!-- Icon từ Font Awesome -->
       <i class="fas fa-credit-card modal-icon"></i>
     </div>
     <div class="card-info">
       <div class="input-group">
-        <input type="number" id="cardAmount" placeholder="Số tiền muốn nạp (VNĐ)">
+        <!-- Đổi type từ number sang text -->
+        <input type="text" id="cardAmount" placeholder="VD : 50000">
       </div>
       <div class="input-group">
         <input type="text" id="cardType" placeholder="Loại thẻ (Viettel, Vina...)">
@@ -210,7 +232,6 @@
     <p class="info-note">(Sau khi Admin duyệt, số dư sẽ được cộng)</p>
   </div>
 </div>
-
  <!-- Modal Lịch sử mua hàng -->
 <div id="orderHistoryModal" class="modal hidden">
   <div class="modal-content order-modal-content">
@@ -241,10 +262,12 @@
 </div>
 <!-- Phần kết trang -->
   <section class="footer-iguidecheat">
-    <!-- Tiêu đề giới thiệu -->
-    <h2 class="footer-title">GIỚI THIỆU TRUMAIMBOT</h2>
+  <div class="khung">
+    <h1>Hà Văn Huấn</h1>
+  </div>
+    
     <p class="footer-desc">
-      Trumaimbot.online là nền tảng hàng đầu cung cấp các công cụ và mod trò chơi,
+      huanhaios.shop là nền tảng hàng đầu cung cấp các công cụ và mod trò chơi,
       giúp bạn trải nghiệm những game một cách dễ dàng và an toàn. Chúng tôi
       hiểu rằng mỗi người có một cách chơi khác nhau, vì vậy chúng tôi luôn
       tập trung vào việc đem lại sự hỗ trợ tốt nhất. Hãy truy cập thường xuyên
